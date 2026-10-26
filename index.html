@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090b">
+<meta name="description" content="A premium mobile camera experience inspired by flagship photography phones.">
+<title>ULTRA CAM — Mobile Camera</title>
+<style>
+:root{color-scheme:dark;--bg:#08090b;--panel:#111317;--muted:#969ba5;--line:#282b31;--gold:#e5c68b;--white:#f7f7f5}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}button,input{font:inherit}button{color:inherit;cursor:pointer;border:0}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}.app{width:100%;max-width:560px;min-height:100dvh;margin:auto;display:flex;flex-direction:column;background:linear-gradient(160deg,#101115 0%,#08090b 35%,#0c0d10 100%);overflow:hidden}.top{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 12px}.brand{font-size:13px;font-weight:800;letter-spacing:.23em}.brand span{color:var(--gold)}.subbrand{font-size:9px;color:var(--muted);letter-spacing:.16em;margin-top:4px}.round{width:42px;height:42px;border-radius:50%;background:#191b20;border:1px solid #303239;display:grid;place-items:center;font-size:18px}.status{display:flex;gap:8px;align-items:center;font-size:10px;letter-spacing:.1em;color:#bfc1c6}.dot{width:7px;height:7px;border-radius:50%;background:#777}.dot.live{background:#ef5e54;box-shadow:0 0 12px #ef5e5480}.view-wrap{position:relative;margin:0 10px;border-radius:25px;overflow:hidden;background:#050607;border:1px solid #292b30;min-height:54dvh;max-height:690px;flex:1;display:flex;align-items:center;justify-content:center}.view-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#050607;display:none}.view-wrap video.on{display:block}.placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;background:radial-gradient(ellipse at 50% 42%,#25252a 0%,#111216 37%,#050607 78%)}.placeholder.hidden{display:none}.lens-art{width:154px;height:154px;border-radius:50%;border:1px solid #77716a;display:grid;place-items:center;margin:0 auto 22px;box-shadow:0 0 0 9px #ffffff05,0 0 0 19px #ffffff03,0 0 45px #c6a76c20;background:radial-gradient(circle,#20232a 0,#090a0d 60%,#272a30 62%,#0c0d10 70%)}.lens-art:before{content:"";width:85px;height:85px;border-radius:50%;border:2px solid #9c8a6a;box-shadow:inset 0 0 25px #c6a76c30,0 0 18px #c6a76c24;background:radial-gradient(circle at 35% 30%,#444a54,#101218 48%,#030405 75%)}.welcome-title{font-size:20px;font-weight:750;letter-spacing:.08em}.welcome-copy{font-size:12px;line-height:1.65;color:#a8abb3;max-width:260px;margin:10px auto 18px}.primary{border-radius:99px;background:linear-gradient(135deg,#f1d8a7,#c49a59);color:#18130b;padding:13px 22px;font-size:12px;font-weight:850;letter-spacing:.08em;box-shadow:0 8px 25px #c49a5925}.primary:disabled{opacity:.4;cursor:not-allowed}.hud{position:absolute;inset:0;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:17px 15px}.hud-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.hud-pill{background:#05060788;border:1px solid #ffffff25;backdrop-filter:blur(10px);padding:7px 10px;border-radius:99px;font-size:10px;letter-spacing:.08em;color:#f4f1e9}.hud-pill.gold{color:var(--gold)}.grid-lines{position:absolute;inset:0;opacity:.24;background:linear-gradient(90deg,transparent 33.1%,#fff 33.33%,transparent 33.55%,transparent 66.4%,#fff 66.66%,transparent 66.9%),linear-gradient(0deg,transparent 33.1%,#fff 33.33%,transparent 33.55%,transparent 66.4%,#fff 66.66%,transparent 66.9%);display:none;pointer-events:none}.grid-lines.show{display:block}.focus-box{position:absolute;width:62px;height:62px;border:1px solid #f2d9a0;left:50%;top:46%;transform:translate(-50%,-50%);display:none;pointer-events:none}.focus-box.show{display:block}.focus-box:before,.focus-box:after{content:"";position:absolute;background:#f2d9a0}.focus-box:before{width:1px;height:12px;left:50%;top:-6px}.focus-box:after{height:1px;width:12px;top:50%;right:-6px}.side-controls{position:absolute;right:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px;pointer-events:auto}.side-btn{width:39px;height:39px;border-radius:50%;background:#090a0bbd;border:1px solid #ffffff2c;font-size:10px;backdrop-filter:blur(8px)}.side-btn.active{border-color:var(--gold);color:var(--gold)}.zoom-row{position:absolute;bottom:17px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;pointer-events:auto}.zoom{min-width:43px;height:43px;border-radius:50%;background:#0b0c0dc9;border:1px solid #ffffff24;font-size:11px;font-weight:700;backdrop-filter:blur(10px)}.zoom.active{background:var(--gold);color:#17120b;border-color:var(--gold);transform:scale(1.08)}.bottom{padding:16px 16px 22px}.statusline{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:10px;letter-spacing:.1em;margin:0 3px 14px}.mode-row{display:flex;justify-content:center;gap:20px;overflow:auto;white-space:nowrap;margin-bottom:18px;scrollbar-width:none}.mode-row::-webkit-scrollbar{display:none}.mode{font-size:11px;color:#8e929b;background:transparent;padding:5px 0;letter-spacing:.06em;position:relative}.mode.active{color:var(--gold);font-weight:800}.mode.active:after{content:"";position:absolute;left:25%;right:25%;bottom:-7px;height:2px;border-radius:2px;background:var(--gold)}.controls{display:grid;grid-template-columns:1fr 1.2fr 1fr;align-items:center;gap:12px}.gallery-thumb{width:52px;height:52px;border-radius:15px;border:1px solid #383a40;background:#17191e;overflow:hidden;display:grid;place-items:center;margin:auto}.gallery-thumb img{width:100%;height:100%;object-fit:cover}.gallery-thumb span{font-size:19px}.shutter-area{display:flex;align-items:center;justify-content:center;position:relative}.shutter{width:76px;height:76px;border-radius:50%;border:3px solid #e7e7e3;background:transparent;display:grid;place-items:center;box-shadow:0 0 0 5px #ffffff10;transition:transform .12s}.shutter:active{transform:scale(.93)}.shutter-core{width:61px;height:61px;border-radius:50%;background:linear-gradient(135deg,#fff,#ddd);box-shadow:inset 0 0 0 1px #b8b8b8}.shutter.recording .shutter-core{width:29px;height:29px;border-radius:8px;background:#e85a51}.small-control{background:transparent;color:#d9d9d7;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:10px}.small-control .round{width:45px;height:45px}.right-control{justify-self:center}.hint{text-align:center;color:#747983;font-size:10px;line-height:1.5;margin-top:16px}.panel{margin:0 12px 12px;background:#111318;border:1px solid #292c32;border-radius:20px;padding:14px;display:none}.panel.open{display:block}.panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.panel-title{font-size:12px;font-weight:800;letter-spacing:.12em}.close{background:#24262c;border-radius:50%;width:29px;height:29px}.slider-row{display:grid;grid-template-columns:74px 1fr 42px;align-items:center;gap:10px;font-size:11px;color:#c5c6cb;margin:12px 0}.slider-row input{width:100%;accent-color:var(--gold)}.slider-val{text-align:right;color:var(--gold);font-variant-numeric:tabular-nums}.panel-note{font-size:10px;line-height:1.55;color:#9296a0}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.gallery-item{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:#24262c;border:1px solid #333}.gallery-item img,.gallery-item video{width:100%;height:100%;object-fit:cover}.gallery-item button{position:absolute;right:5px;top:5px;background:#0009;border-radius:50%;width:25px;height:25px}.empty{color:#858a94;font-size:12px;text-align:center;padding:28px 8px}.notice{position:fixed;z-index:10;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:90vw;text-align:center;background:#f2e0bd;color:#19140d;border-radius:12px;padding:11px 15px;font-size:12px;font-weight:700;transition:.22s;box-shadow:0 8px 35px #0008}.notice.show{opacity:1;transform:translate(-50%,0)}.hidden-file{display:none}.record-label{color:#ff766e}.permission-note{font-size:11px;color:#c0c2c8;line-height:1.6;margin-top:12px}.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}.flash.pop{animation:flash .35s ease-out}@keyframes flash{0%{opacity:.8}100%{opacity:0}}@media(min-width:520px){.view-wrap{min-height:590px}.app{border-left:1px solid #202126;border-right:1px solid #202126}.bottom{padding-bottom:25px}}@media(max-height:720px){.view-wrap{min-height:47dvh}.bottom{padding-top:10px}.top{padding-top:10px;padding-bottom:8px}.shutter{width:66px;height:66px}.shutter-core{width:53px;height:53px}}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="top">
+    <div><div class="brand">ULTRA<span>CAM</span></div><div class="subbrand">MOBILE PHOTOGRAPHY SYSTEM</div></div>
+    <div class="status"><span class="dot" id="liveDot"></span><span id="statusText">CAMERA STANDBY</span><button class="round" id="settingsBtn" aria-label="Pro settings">☷</button></div>
+  </header>
+  <section class="view-wrap" id="viewWrap" aria-label="Camera preview">
+    <video id="preview" playsinline autoplay muted></video>
+    <div class="placeholder" id="placeholder">
+      <div>
+        <div class="lens-art"></div>
+        <div class="welcome-title">SEE THE EXTRAORDINARY</div>
+        <p class="welcome-copy">A flagship-inspired camera experience. Start your camera to capture photos and videos using your phone's real lens.</p>
+        <button class="primary" id="startBtn">START CAMERA ↗</button>
+        <div class="permission-note">Camera access is used only in this browser session. HTTPS is required.</div>
+      </div>
+    </div>
+    <div class="grid-lines" id="gridLines"></div><div class="focus-box" id="focusBox"></div>
+    <div class="hud">
+      <div class="hud-row"><span class="hud-pill gold" id="modeBadge">PHOTO · AUTO</span><span class="hud-pill" id="resolution">READY</span></div>
+      <div class="hud-row"><span class="hud-pill" id="exposureBadge">EV 0.0</span><span class="hud-pill" id="timerBadge">00:00</span></div>
+    </div>
+    <div class="side-controls">
+      <button class="side-btn" id="gridBtn" aria-label="Grid">▦</button>
+      <button class="side-btn" id="flashBtn" aria-label="Flash">ϟ</button>
+      <button class="side-btn" id="switchBtn" aria-label="Switch camera">↻</button>
+    </div>
+    <div class="zoom-row" id="zoomRow"><button class="zoom active" data-zoom="1">1×</button><button class="zoom" data-zoom="2">2×</button><button class="zoom" data-zoom="3">3×</button><button class="zoom" data-zoom="5">5×</button><button class="zoom" data-zoom="10">10×</button></div>
+    <div class="flash" id="flashOverlay"></div>
+  </section>
+
+  <section class="panel" id="proPanel">
+    <div class="panel-head"><div class="panel-title">PRO CONTROLS</div><button class="close" data-close="proPanel">×</button></div>
+    <div class="slider-row"><label for="exposure">Exposure</label><input id="exposure" type="range" min="-2" max="2" step=".1" value="0"><span class="slider-val" id="exposureVal">0.0 EV</span></div>
+    <div class="slider-row"><label for="brightness">Brightness</label><input id="brightness" type="range" min="60" max="150" value="100"><span class="slider-val" id="brightnessVal">100%</span></div>
+    <div class="slider-row"><label for="contrast">Contrast</label><input id="contrast" type="range" min="70" max="180" value="100"><span class="slider-val" id="contrastVal">100%</span></div>
+    <div class="slider-row"><label for="saturation">Saturation</label><input id="saturation" type="range" min="0" max="180" value="100"><span class="slider-val" id="saturationVal">100%</span></div>
+    <div class="slider-row"><label for="sharpness">Night / Moon</label><input id="sharpness" type="range" min="0" max="100" value="0"><span class="slider-val" id="sharpnessVal">0%</span></div>
+    <p class="panel-note">These are software preview adjustments. Moon/Night enhancement changes contrast and brightness; it cannot create real optical detail. Hardware zoom and manual focus depend on your phone and browser.</p>
+  </section>
+
+  <section class="panel" id="galleryPanel">
+    <div class="panel-head"><div class="panel-title">YOUR CAPTURES</div><button class="close" data-close="galleryPanel">×</button></div>
+    <div class="gallery-grid" id="galleryGrid"><div class="empty" style="grid-column:1/-1">Your photos and videos will appear here.</div></div>
+  </section>
+
+  <footer class="bottom">
+    <div class="statusline"><span id="modeHint">AUTO · SMART CAPTURE</span><span id="captureCount">0 CAPTURES</span></div>
+    <nav class="mode-row" aria-label="Camera modes">
+      <button class="mode" data-mode="NIGHT">NIGHT</button><button class="mode" data-mode="PORTRAIT">PORTRAIT</button><button class="mode active" data-mode="PHOTO">PHOTO</button><button class="mode" data-mode="VIDEO">VIDEO</button><button class="mode" data-mode="PRO">PRO</button>
+    </nav>
+    <div class="controls">
+      <button class="small-control" id="galleryBtn"><span class="gallery-thumb" id="galleryThumb"><span>▧</span></span><span>GALLERY</span></button>
+      <div class="shutter-area"><button class="shutter" id="shutter" aria-label="Take photo"><span class="shutter-core"></span></button></div>
+      <button class="small-control right-control" id="enhanceBtn"><span class="round">✧</span><span id="enhanceLabel">MOON AI</span></button>
+    </div>
+    <p class="hint" id="hintText">Tap START CAMERA · Use 1×–10× to adjust digital zoom</p>
+  </footer>
+</main>
+<div class="notice" id="notice" role="status"></div>
+<canvas id="captureCanvas" class="hidden-file"></canvas>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const video = $('preview'), placeholder = $('placeholder'), startBtn = $('startBtn'), shutter = $('shutter');
+  let stream = null, facing = 'environment', mode = 'PHOTO', zoom = 1, tracks = [], recorder = null, chunks = [], recording = false, startedAt = 0, timerInterval = null, captures = [], flashOn = false, enhancement = false;
+  const supportsMedia = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
+  function toast(message){ const n=$('notice'); n.textContent=message; n.classList.add('show'); clearTimeout(toast.t); toast.t=setTimeout(()=>n.classList.remove('show'),2600); }
+  function setStatus(text, live=false){ $('statusText').textContent=text; $('liveDot').classList.toggle('live',live); }
+  function activeTrack(){return stream && stream.getVideoTracks()[0];}
+  function applyZoom(value){
+    zoom = value; document.querySelectorAll('.zoom').forEach(b=>b.classList.toggle('active',Number(b.dataset.zoom)===value));
+    const track=activeTrack(), caps=track && track.getCapabilities ? track.getCapabilities() : {};
+    if(track && caps.zoom){ const z=Math.max(caps.zoom.min,Math.min(caps.zoom.max,value)); track.applyConstraints({advanced:[{zoom:z}]}).catch(()=>{}); }
+    else video.style.transform=`scale(${value})`;
+    $('hintText').textContent = (caps.zoom ? 'HARDWARE ZOOM' : 'DIGITAL ZOOM') + ` · ${value}× · Quality depends on your phone lens`;
+  }
+  async function startCamera(){
+    if(!supportsMedia){toast('Camera API unavailable. Open this page in Safari/Chrome over HTTPS.');return;}
+    try{
+      if(stream) stream.getTracks().forEach(t=>t.stop());
+      stream = await navigator.mediaDevices.getUserMedia({audio:false,video:{facingMode:{ideal:facing},width:{ideal:1920},height:{ideal:1080}}});
+      video.srcObject=stream; await video.play(); video.classList.add('on'); placeholder.classList.add('hidden');
+      const t=activeTrack(), s=t.getSettings?t.getSettings():{};
+      $('resolution').textContent=(s.width&&s.height)?`${s.width} × ${s.height}`:'LIVE VIEW';
+      setStatus('CAMERA LIVE',true); $('hintText').textContent='Tap the shutter to capture · Allow camera permission when prompted';
+      applyZoom(1); toast('Camera ready — make some magic ✨');
+    }catch(err){
+      let msg='Could not start camera.';
+      if(err.name==='NotAllowedError'||err.name==='PermissionDeniedError') msg='Camera permission denied. Allow camera access in browser settings.';
+      else if(err.name==='NotFoundError'||err.name==='DevicesNotFoundError') msg='No compatible camera was found on this device.';
+      else if(err.name==='NotReadableError') msg='Camera is busy in another app. Close it and try again.';
+      else if(location.protocol!=='https:' && location.hostname!=='localhost') msg='Camera needs HTTPS. GitHub Pages supports HTTPS.';
+      toast(msg); setStatus('CAMERA STANDBY',false);
+    }
+  }
+  function stopCamera(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;video.srcObject=null;video.classList.remove('on');video.style.transform='';placeholder.classList.remove('hidden');setStatus('CAMERA STANDBY',false);}
+  function filters(){const b=Number($('brightness').value),c=Number($('contrast').value),s=Number($('saturation').value),e=Number($('exposure').value),n=Number($('sharpness').value);const bright=b*Math.pow(2,e);video.style.filter=`brightness(${bright}%) contrast(${c+n*.35}%) saturate(${s}%) ${mode==='NIGHT'?'sepia(8%)':''}`;}
+  function updateRange(id,valId,suffix,dec=0){const el=$(id);$(valId).textContent=(dec?Number(el.value).toFixed(dec):el.value)+suffix;filters();}
+  function updateMode(next){
+    mode=next;document.querySelectorAll('.mode').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));
+    $('modeBadge').textContent=mode+' · '+(mode==='PRO'?'MANUAL':mode==='NIGHT'?'LOW LIGHT':'AUTO');
+    $('modeHint').textContent=mode==='NIGHT'?'LOW LIGHT · HOLD STEADY':mode==='PORTRAIT'?'PORTRAIT · DEPTH LOOK':mode==='VIDEO'?'VIDEO · LIVE RECORDING':mode==='PRO'?'PRO · MANUAL ADJUSTMENTS':'AUTO · SMART CAPTURE';
+    $('hintText').textContent=mode==='VIDEO'?'Tap shutter to start/stop recording':mode==='NIGHT'?'Night look enabled · Keep your phone steady':'Tap shutter to capture';
+    if(mode==='PRO') $('proPanel').classList.add('open');
+    if(mode==='NIGHT'){$('sharpness').value=Math.max(Number($('sharpness').value),40);updateRange('sharpness','sharpnessVal','%',0);}
+    filters(); shutter.classList.toggle('recording',recording);
+    $('shutter').setAttribute('aria-label',mode==='VIDEO'?'Start or stop recording':'Take photo');
+  }
+  function drawCapture(){
+    if(!video.videoWidth||!video.videoHeight){toast('Wait for the camera preview to load.');return null;}
+    const canvas=$('captureCanvas'),ctx=canvas.getContext('2d');
+    const scale=Math.min(1,1920/video.videoWidth);canvas.width=Math.round(video.videoWidth*scale);canvas.height=Math.round(video.videoHeight*scale);
+    ctx.save();
+    if(facing==='user'){ctx.translate(canvas.width,0);ctx.scale(-1,1);}
+    ctx.filter=`brightness(${Number($('brightness').value)*Math.pow(2,Number($('exposure').value))}%) contrast(${Number($('contrast').value)+Number($('sharpness').value)*.35}%) saturate(${Number($('saturation').value)}%)`;
+    const cropZoom=zoom; const sw=video.videoWidth/cropZoom,sh=video.videoHeight/cropZoom,sx=(video.videoWidth-sw)/2,sy=(video.videoHeight-sh)/2;
+    ctx.drawImage(video,sx,sy,sw,sh,0,0,canvas.width,canvas.height);ctx.restore();
+    return canvas;
+  }
+  function addCapture(data,type){
+    const item={data,type,time:Date.now()};captures.unshift(item);$('captureCount').textContent=`${captures.length} CAPTURE${captures.length===1?'':'S'}`;
+    const thumb=$('galleryThumb');thumb.innerHTML=type==='photo'?`<img alt="Latest capture" src="${data}">`:'<span>▶</span>';
+    renderGallery();return item;
+  }
+  function takePhoto(){
+    const canvas=drawCapture();if(!canvas)return;
+    const data=canvas.toDataURL('image/jpeg',.94);addCapture(data,'photo');
+    const f=$('flashOverlay');f.classList.remove('pop');void f.offsetWidth;f.classList.add('pop');
+    const a=document.createElement('a');a.href=data;a.download=`ultracam-${new Date().toISOString().replace(/[:.]/g,'-')}.jpg`;a.click();
+    toast('Photo captured and saved to your device 📸');
+  }
+  function startRecording(){
+    if(!stream){toast('Start the camera first.');return;}
+    if(!window.MediaRecorder){toast('Video recording is not supported by this browser.');return;}
+    try{
+      const options=MediaRecorder.isTypeSupported('video/webm;codecs=vp9')?{mimeType:'video/webm;codecs=vp9'}:MediaRecorder.isTypeSupported('video/webm')?{mimeType:'video/webm'}:{};
+      recorder=new MediaRecorder(stream,options);chunks=[];
+      recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
+      recorder.onstop=()=>{
+        const blob=new Blob(chunks,{type:recorder.mimeType||'video/webm'}),url=URL.createObjectURL(blob),reader=new FileReader();
+        reader.onload=()=>{const data=reader.result;addCapture(data,'video');const a=document.createElement('a');a.href=url;a.download=`ultracam-video-${Date.now()}.webm`;a.click();toast('Video saved to your device 🎬');};
+        reader.readAsDataURL(blob);
+      };
+      recorder.start();recording=true;startedAt=Date.now();shutter.classList.add('recording');$('timerBadge').textContent='REC 00:00';setStatus('RECORDING',true);
+      timerInterval=setInterval(()=>{const s=Math.floor((Date.now()-startedAt)/1000);$('timerBadge').textContent=`REC ${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;},500);
+    }catch(e){toast('Unable to start video recording on this browser.');}
+  }
+  function stopRecording(){if(recorder&&recording){recording=false;recorder.stop();clearInterval(timerInterval);shutter.classList.remove('recording');$('timerBadge').textContent='00:00';setStatus('CAMERA LIVE',true);}}
+  function renderGallery(){
+    const grid=$('galleryGrid');if(!captures.length){grid.innerHTML='<div class="empty" style="grid-column:1/-1">Your photos and videos will appear here.</div>';return;}
+    grid.innerHTML='';captures.forEach((c,i)=>{const item=document.createElement('div');item.className='gallery-item';if(c.type==='photo'){const img=document.createElement('img');img.src=c.data;img.alt='Captured photo';item.appendChild(img);}else{const v=document.createElement('video');v.src=c.data;v.controls=true;v.playsInline=true;item.appendChild(v);}const del=document.createElement('button');del.textContent='×';del.setAttribute('aria-label','Remove capture');del.onclick=()=>{captures.splice(i,1);$('captureCount').textContent=`${captures.length} CAPTURE${captures.length===1?'':'S'}`;renderGallery();};item.appendChild(del);grid.appendChild(item);});
+  }
+  startBtn.addEventListener('click',startCamera);
+  shutter.addEventListener('click',()=>{if(mode==='VIDEO'){recording?stopRecording():startRecording();}else if(!stream){toast('Tap START CAMERA first.');}else takePhoto();});
+  document.querySelectorAll('.zoom').forEach(b=>b.addEventListener('click',()=>applyZoom(Number(b.dataset.zoom))));
+  document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>updateMode(b.dataset.mode)));
+  $('settingsBtn').addEventListener('click',()=> $('proPanel').classList.toggle('open'));
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>$(b.dataset.close).classList.remove('open')));
+  $('galleryBtn').addEventListener('click',()=>{$('galleryPanel').classList.toggle('open');if($('galleryPanel').classList.contains('open'))$('galleryPanel').scrollIntoView({behavior:'smooth',block:'nearest'});});
+  $('gridBtn').addEventListener('click',()=>{$('gridLines').classList.toggle('show');$('gridBtn').classList.toggle('active');});
+  $('flashBtn').addEventListener('click',async()=>{const t=activeTrack(),caps=t&&t.getCapabilities?t.getCapabilities():{};if(caps.torch){flashOn=!flashOn;try{await t.applyConstraints({advanced:[{torch:flashOn}]});$('flashBtn').classList.toggle('active',flashOn);}catch(e){toast('Flash could not be toggled.');}}else{toast('Flash control is not available for this camera/browser.');}});
+  $('switchBtn').addEventListener('click',async()=>{facing=facing==='environment'?'user':'environment';if(stream)await startCamera();});
+  $('enhanceBtn').addEventListener('click',()=>{enhancement=!enhancement;$('enhanceBtn').classList.toggle('active',enhancement);$('enhanceLabel').textContent=enhancement?'MOON ON':'MOON AI';$('sharpness').value=enhancement?65:0;updateRange('sharpness','sharpnessVal','%',0);if(mode==='NIGHT')filters();toast(enhancement?'Moon/night contrast enhancement enabled.':'Enhancement turned off.');});
+  [['exposure','exposureVal',' EV',1],['brightness','brightnessVal','%',0],['contrast','contrastVal','%',0],['saturation','saturationVal','%',0],['sharpness','sharpnessVal','%',0]].forEach(([id,v,s,d])=>$(id).addEventListener('input',()=>{updateRange(id,v,s,d);if(id==='exposure')$('exposureBadge').textContent='EV '+Number($(id).value).toFixed(1);}));
+  $('viewWrap').addEventListener('click',e=>{if(e.target.closest('button'))return;const rect=$('viewWrap').getBoundingClientRect(),x=e.clientX-rect.left,y=e.clientY-rect.top,box=$('focusBox');box.style.left=x+'px';box.style.top=y+'px';box.classList.add('show');setTimeout(()=>box.classList.remove('show'),900);});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&recording)stopRecording();});
+  if(!supportsMedia){startBtn.textContent='CAMERA NOT SUPPORTED';startBtn.disabled=true;$('hintText').textContent='Open this page in a modern mobile browser over HTTPS.';}
+})();
+</script>
+</body>
+</html>
